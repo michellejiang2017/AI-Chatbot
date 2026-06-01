@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import axios from 'axios'
-import './App.css'
+import { useState } from "react";
+import axios from "axios";
+import "./App.css";
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -8,7 +8,7 @@ function App() {
 
   async function sendMessage() {
     if (!input.trim()) return;
-  }
+
     const userMessage = { role: "user", content: input };
     const updatedMessages = [...messages, userMessage];
 
@@ -33,32 +33,37 @@ function App() {
         { role: "assistant", content: "Error: backend request failed." },
       ]);
     }
+  }
 
   return (
     <div className="app">
-      <h1>ChatGPT Clone</h1>
+      <header className="header">
+        <h1>ChatGPT Clone</h1>
+      </header>
 
-      <div className="chat-box">
+      <main className="chat-box">
         {messages.map((message, index) => (
-          <div key={index} className={`message ${message.role}`}>
-            <strong>{message.role === "user" ? "You" : "Bot"}:</strong>{" "}
-            {message.content}
+          <div key={index} className={`message-row ${message.role}`}>
+            <div className="message-bubble">
+              {message.content}
+            </div>
           </div>
         ))}
-      </div>
+      </main>
 
-      <div className="input-row">
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type a message..."
-          onKeyDown={(e) => {
-            if (e.key === "Enter") sendMessage();
-          }}
-        />
-
-        <button onClick={sendMessage}>Send</button>
-      </div>
+      <footer className="input-area">
+        <div className="input-wrapper">
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Message ChatGPT Clone"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") sendMessage();
+            }}
+          />
+          <button onClick={sendMessage}>Send</button>
+        </div>
+      </footer>
     </div>
   );
 }
