@@ -1,5 +1,8 @@
 # React + Vite
 
+[frontend](https://frontend-ai-chatbot.netlify.app/)
+[backend](https://backend-ai-chatbot-6tbi.onrender.com/)
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
