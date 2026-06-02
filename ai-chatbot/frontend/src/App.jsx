@@ -3,6 +3,8 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
+  const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:5001';
+
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
@@ -16,7 +18,7 @@ function App() {
     setInput("");
 
     try {
-      const response = await axios.post("http://localhost:5001/chat", {
+      const response = await axios.post(`${baseURL}/chat`, {
         messages: updatedMessages,
       });
 
